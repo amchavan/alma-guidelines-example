@@ -1,0 +1,86 @@
+<table class="ui celled table" style="table-layout: fixed;" *ngIf="dataReducer != undefined">
+  <tbody>
+  <tr>
+    <td colspan="2" width="30%">
+      ALMA ID
+    </td>
+    <td>{{dataReducer.userId}}</td>
+  </tr>
+  <tr>
+    <td colspan="2">Name</td>
+    <td>{{dataReducer.name}}</td>
+  </tr>
+  <tr>
+    <td colspan="2">E-mail</td>
+    <td>{{dataReducer.email}}</td>
+  </tr>
+  <tr>
+    <td colspan="2">Institution ARC</td>
+    <td>{{(dataReducer.arc!=undefined)?dataReducer.arc.toUpperCase():''}}</td>
+  </tr>
+  <tr>
+    <td colspan="2">Roles</td>
+    <td style="word-wrap:break-word;">{{dataReducer.roles}}</td>
+  </tr>
+  <tr>
+    <td colspan="2">Data Reducer ARC</td>
+    <td>
+      <sui-select class="selection"
+                  [(ngModel)]="selectedArc"
+                  [options]="options"
+                  labelField="name"
+                  (selectedOptionChange)="onArcChange()"
+                  #select>
+        <sui-select-option *ngFor="let option of select.filteredOptions"
+                           [value]="option">
+        </sui-select-option>
+      </sui-select>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">Data Reducer Node</td>
+    <td>
+      <sui-select *ngIf="selectedArc != undefined"
+                  class="selection"
+                  [(ngModel)]="selectedNode"
+                  [options]="optionsNodes.get(selectedArc.name)"
+                  labelField="name"
+                  (selectedOptionChange)="onNodeChange()"
+                  #select>
+        <sui-select-option *ngFor="let option of select.filteredOptions"
+                           [value]="option">
+        </sui-select-option>
+      </sui-select>
+    </td>
+  </tr>
+  <tr>
+    <td rowspan="4">Qualifications</td>
+    <td>Manual Calibration</td>
+    <td class="center aligned"><div class="field">
+      <sui-checkbox [(ngModel)]="dataReducer.manualCalibration">
+      </sui-checkbox>
+    </div></td>
+  </tr>
+  <tr>
+    <td>Manual Imaging</td>
+    <td class="center aligned"><div class="field">
+      <sui-checkbox [(ngModel)]="dataReducer.manualImaging">
+      </sui-checkbox>
+    </div></td>
+  </tr>
+  <tr>
+    <td>WebLog Review</td>
+    <td class="center aligned"><div class="field">
+      <sui-checkbox [(ngModel)]="dataReducer.weblogReview">
+      </sui-checkbox>
+    </div></td>
+  </tr>
+  <tr>
+    <td>QA2 Approval</td>
+    <td class="center aligned"> <div class="field">
+      <sui-checkbox [(ngModel)]="dataReducer.qa2Approval">
+      </sui-checkbox>
+    </div></td>
+  </tr>
+  </tbody>
+</table>

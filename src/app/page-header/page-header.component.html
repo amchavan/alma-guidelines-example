@@ -1,0 +1,61 @@
+<div class="ui fixed almacolor inverted menu">
+  <div class="ui fluid container">
+    <div class="item" style="padding-top:0px;padding-bottom:0px;padding-left:5px">
+      <a routerLink="/">
+        <img class="ui image alma-logo" src='assets/img/almalogo.png'>
+      </a>
+        &nbsp;&nbsp;<b>Example Tool</b>
+    </div>
+    <a routerLink="/add" class="active item" 
+       [ngClass]="{'active': (router.url.indexOf('/add') > -1) || (router.url == '/')}">
+      <i class="user plus icon"></i> Add/Remove
+    </a>
+    <a routerLink="/manage" class="item" 
+       [ngClass]="{'active': router.url.indexOf('/manage') > -1}">
+      <i class="ordered list icon"></i> Management
+    </a>
+    <a routerLink="/booking" class="item"
+       [ngClass]="{'active': router.url.indexOf('/booking') > -1}">
+      <i class="edit icon"></i> Booking
+    </a>
+    <a routerLink="/availability" class="item" 
+       [ngClass]="{'active': router.url.indexOf('/availability') > -1}">
+      <i class="calendar alternate icon"></i> Availability
+    </a>
+    <div class="ui dropdown item"
+         [ngClass]="{'active': router.url.indexOf('/help') > -1}"
+         suiDropdown>
+      <i class="help icon"></i>
+      Help
+      <i class="dropdown icon"></i>
+      <div class="menu" suiDropdownMenu>
+        <a class="item" [routerLink]="['/help']">
+          <i class="help icon"></i> User Manual
+        </a>
+        <a class="item" href="mailto:usd-help@alma.cl?subject=DRM Tool"> <i class="mail icon"></i> Send us your comments
+        </a>
+      </div>
+    </div>
+    <div class="ui right dropdown item" suiDropdown>
+      <i class="user icon"></i>
+      <div>
+        Example User
+      </div>
+      <i class="dropdown icon"></i>
+      <div class="menu" suiDropdownMenu>
+        <div class="item">
+          Version 1.0.0alpha1
+        </div>
+        <div class="item" (click)="logout()">
+          <i class="sign out icon"></i> Logout
+        </div>
+        <a class="item" href="http://asa.alma.cl/UserRegistration/secure/updateAccount.jsp">
+          <i class="setting icon"></i> User profile
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- invisible spacer -->
+<div class="ui main text container">
+  <h1 style="margin-bottom: 0.2em;" class="ui header">SPACER</h1> </div>

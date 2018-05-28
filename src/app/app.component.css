@@ -1,0 +1,23 @@
+.text-nowrap {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;;
+}
+
+.unset {
+  color : #808080 !important;
+}
+
+.avail {
+  color : #008000 !important;;
+}
+
+.away {
+  color : #ad2121 !important;;
+}
+
+.ifneed {
+  color : #FFFF00 !important;;
+}
+

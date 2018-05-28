@@ -1,0 +1,155 @@
+<div class="ui two column grid" style="height: 100%;">
+
+  <div class="four wide column">
+    <table class="ui basic table">
+      <thead>
+      <tr>
+        <th colspan="3">Data reducer search</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Name, id
+          </td>
+          <td>
+            <div class="ui search">
+              <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="DR name/id" >
+                <i class="search icon"></i>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Data Reducer ARC</label>
+          </td>
+          <td>
+            <sui-select class="selection"
+                        [(ngModel)]="selectedArc"
+                        [options]="options"
+                        labelField="name"
+                        (selectedOptionChange)="onArcChange()"
+                        #select>
+              <sui-select-option *ngFor="let option of select.filteredOptions"
+                                 [value]="option">
+              </sui-select-option>
+            </sui-select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Data Reducer Node</label>
+          </td>
+          <td>
+            <sui-select *ngIf="selectedArc != undefined"
+                        class="selection"
+                        [(ngModel)]="selectedNode"
+                        [options]="optionsNodes.get(selectedArc.name)"
+                        labelField="name"
+                        (selectedOptionChange)="onNodeChange()"
+                        #select>
+              <sui-select-option *ngFor="let option of select.filteredOptions"
+                                 [value]="option">
+              </sui-select-option>
+            </sui-select>
+          </td>
+        </tr>
+        <tr>
+          <td>Qualifications</td>
+          <td>
+            <sui-checkbox >
+              Manual Calibration
+            </sui-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <sui-checkbox [(ngModel)]="dataReducerSearch.manualImaging">
+              Manual Imaging
+            </sui-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <sui-checkbox [(ngModel)]="dataReducerSearch.weblogReview">
+              WebLog Review
+            </sui-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <sui-checkbox [(ngModel)]="dataReducerSearch.qa2Approval">
+              QA2 Approval
+            </sui-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button class="ui tiny compact almacolor button"
+                    (click)="search()" tabindex="0">
+              <i class="search icon"></i>
+              Search
+            </button>
+          </td>
+          <td>
+            <button class="ui tiny compact red button"
+                    (click)="reset()">
+              <i class="delete icon"></i>
+              Reset
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div  class="twelve wide column ui" style=" cursor: pointer;">
+    <table class="ui selectable basic table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>ALMA ID</th>
+        <th>E-mail</th>
+        <th>Inst. ARC</th>
+        <th>Node</th>
+        <th>DR ARC</th>
+        <th>Manual Cal</th>
+        <th>Manual Img</th>
+        <th>Weblog Review</th>
+        <th>QA2 Approval</th>
+      </tr>
+      </thead>
+      <tbody style=" height: 300px;overflow-y: scroll;">
+      <tr  *ngFor="let dr of globals.dataReducers" (click)="open(dr)">
+        <td style="white-space: nowrap;">{{dr.user.firstName}} {{dr.user.lastName}}</td>
+        <td>{{dr.userId}}</td>
+        <td>{{dr.user.email}}</td>
+        <td>{{(dr.user.institution!=undefined)?dr.user.institution.executive.toUpperCase():''}}</td>
+        <td>{{(dr.arcNode!=undefined)?dr.arcNode.node:''}}</td>
+        <td>{{(dr.arcNode!=undefined)?dr.arcNode.arc:''}}</td>
+        <td>{{utils.hasQualification(dr,"MANCAL")}}</td>
+        <td>{{utils.hasQualification(dr,"MANIMG")}}</td>
+        <td>{{utils.hasQualification(dr,"WLREVIEW")}}</td>
+        <td>{{utils.hasQualification(dr,"QA2APPRV")}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<ng-template let-context let-modal="modal" #modalTemplate>
+  <div class="header">Data reducer settings</div>
+  <div class="content">
+    <dr-details [dataReducer]="dataReducerSelected"></dr-details>
+  </div>
+  <div class="actions">
+    <button class="ui red button" (click)="modal.deny('denied')">Cancel</button>
+    <button class="ui green button" (click)="modal.approve('approved')" autofocus>Save</button>
+  </div>
+</ng-template>

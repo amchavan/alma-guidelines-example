@@ -1,0 +1,175 @@
+<div class="ui grid" style="height: 100%;">
+  <div class="five wide column ui">
+    <table class="ui basic table">
+      <thead>
+      <tr>
+        <th colspan="2">Availability search</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <label>Data Reducer ARC</label>
+        </td>
+        <td>
+          <sui-select class="selection"
+                      [(ngModel)]="selectedArc"
+                      [options]="options"
+                      labelField="name"
+                      (selectedOptionChange)="onArcChange()"
+                      #select>
+            <sui-select-option *ngFor="let option of select.filteredOptions"
+                               [value]="option">
+            </sui-select-option>
+          </sui-select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Data Reducer Node</label>
+        </td>
+        <td>
+          <sui-multi-select  *ngIf="selectedArc != undefined"
+                             class="selection"
+                            [(ngModel)]="selectedNodes"
+                            [options]="optionsNodes.get(selectedArc.name)"
+                            labelField="name"
+                            (selectedOptionsChange)="onNodeChange()"
+                            #multiSelect>
+            <sui-select-option *ngFor="let optionNode of multiSelect.filteredOptions"
+                               [value]="optionNode">
+            </sui-select-option>
+          </sui-multi-select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button class="ui tiny compact almacolor button"
+                  (click)="search()">
+            <i class="search icon"></i>
+            Search
+          </button>
+        </td>
+        <td>
+          <button class="ui tiny compact red button" (click)="reset()">
+            <i class="remove icon"></i>
+            Reset
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+<!--
+  <div  class="two wide column ui">
+    <table class="ui basic table">
+      <thead>
+        <tr>
+          <th colspan="2">Qualification legend</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          Weblog Review:
+        </td>
+        <td>
+          WR
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Manual Calibration:
+        </td>
+        <td>
+          MC
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Manual Imaging:
+        </td>
+        <td>
+          MI
+        </td>
+      </tr>
+      <tr>
+        <td>
+          QA2 Approval:
+        </td>
+        <td>
+          QA
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+-->
+
+  <div  class="seven wide column ui" style="min-height: 0px !important;">
+    <div class="ui two column grid">
+      <div class="column ui buttons">
+        <div class="ui almacolor button"
+             mwlCalendarPreviousView
+             [view]="view"
+             [(viewDate)]="viewDate"
+             (viewDateChange)="true">
+          Previous
+        </div>
+        <div class="ui almacolor button"
+             mwlCalendarToday
+             [(viewDate)]="viewDate">
+          Current
+        </div>
+        <div class="ui almacolor button"
+             mwlCalendarNextView
+             [view]="view"
+             [(viewDate)]="viewDate"
+             (viewDateChange)="true">
+          Next
+        </div>
+      </div>
+      <div class="column">
+        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+      </div>
+    </div>
+    <mwl-calendar-month-view
+      [viewDate]="viewDate"
+      [excludeDays]="excludeDays">
+    </mwl-calendar-month-view>
+
+  </div>
+
+  <div class="sixteen wide column ui">
+
+      <table class="ui selectable basic table">
+        <thead>
+        <tr>
+          <th>Analyst Name</th>
+          <th>Node</th>
+          <th>
+            Qualifications 
+            <span data-tooltip="WR: Weblog Review, MC: Manual Calibration, MI: Manual Imaging: QA2 Approval">
+              <i class="help icon"></i>
+            </span>
+    
+          </th>
+          <th>Current load</th>
+          <th>Availability</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let dr of globals.dataReducers ">
+          <td>{{! utils.isNullOrUndefined(dr.user)?dr.user.firstName:''}} {{! utils.isNullOrUndefined(dr.user)?dr.user.lastName:''}}</td>
+          <td>{{(! utils.isNullOrUndefined(dr.arcNode))?dr.arcNode.node:''}}</td>
+          <td>{{utils.qualificationsString(dr.qualifications)}}</td>
+          <td>5</td>
+          <td [innerHTML]="utils.availabilityDays(dr.availabilityList)" style="display: inline-block;"></td>
+        </tr>
+        </tbody>
+      </table>
+  </div>
+
+</div>

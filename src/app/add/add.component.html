@@ -1,0 +1,52 @@
+<div class="ui two column grid" style="height: 100%;">
+
+  <div class="eight wide column ui">
+    <div class="ui search">
+      <div class="ui icon input">
+        <input class="prompt" type="text" placeholder="Account Search..." >
+        <i class="search icon" (click)="search()"></i>
+      </div>
+      <div class="results"></div>
+    </div>
+    <table class="ui selectable basic table" style=" cursor: pointer;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>ALMA ID</th>
+          <th>E-mail</th>
+          <th>Institution ARC</th>
+          <th>Data Reducer</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let acc of globals.accounts" (click)="accountSelected(acc.username)" class="{{(dataReducer != undefined && dataReducer.userId == acc.username)?globals.selectedClass:''}}">
+        <td>{{acc.firstName}} {{acc.lastName}}</td>
+        <td>{{acc.username}}</td>
+        <td>{{acc.email}}</td>
+        <td>{{acc.institution.executive}}</td>
+        <td>{{acc.isDataReducer?"Yes":"No"}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+
+  <div  class="eight wide column ui" *ngIf="dataReducer != undefined">
+    <dr-details [dataReducer]="dataReducer"></dr-details>
+    <button class="ui tiny compact almacolor button"
+            (click)="saveDR()"
+            [disabled]="disabledCondition">
+      <i class="save icon"></i>
+      Save as a data reducer
+    </button>
+    <button class="ui tiny compact red button"
+            (click)="deleteFromDR()" [disabled]="! dataReducer.active">
+      <i class="remove icon"></i>
+      Remove from data reducers
+    </button>
+
+
+  </div>
+
+</div>
