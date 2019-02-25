@@ -1,7 +1,7 @@
 # ALMA Web UI Guidelines Example
 
 This project is an example application following ALMA's new 
-[Web UI Guidelines](https://docs.google.com/document/d/17ERC89QlpeVjNH8ZVcey7Esk7ptNt7dcJkIxvyV-Jk4). 
+[Web UI Guidelines](https://docs.google.com/document/d/1Z4MP7fDrOUld2crKcWBTkydB3z6W1Wo6F0OTNnTOIU0/edit?usp=sharing). 
 
 ## Prerequisites
 [Node.js](https://nodejs.org/en/) 8.9 or higher, NPM 5.5.1 or higher (distributed with Node.js) and [Angular CLI](https://github.com/angular/angular-cli). 
