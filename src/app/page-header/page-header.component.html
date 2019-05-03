@@ -4,7 +4,7 @@
       <a routerLink="/">
         <img class="ui image alma-logo" src='assets/img/almalogo.png'>
       </a>
-        &nbsp;&nbsp;<b>Example Tool</b>
+        &nbsp;&nbsp;<b>Example Tool</b>&nbsp;&nbsp;2019JUN
     </div>
     <a routerLink="/add" class="active item" 
        [ngClass]="{'active': (router.url.indexOf('/add') > -1) || (router.url == '/')}">
@@ -43,9 +43,6 @@
       </div>
       <i class="dropdown icon"></i>
       <div class="menu" suiDropdownMenu>
-        <div class="item">
-          Version 1.0.0alpha1
-        </div>
         <div class="item" (click)="logout()">
           <i class="sign out icon"></i> Logout
         </div>
