@@ -1,202 +1,90 @@
-
-
 <div class="ui two column grid" style="height: 100%;">
-  <div class="six wide column">
-    <table class="ui basic table" *ngIf="! utils.isNullOrUndefined(globals.currentDataReducer)">
-      <thead>
-        <tr>
-          <th colspan="2">Data reducer</th>
-          <th colspan="2">Qualifications</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            Analyst name
-          </td>
-          <td>
-            {{globals.currentDataReducer.name}}
-          </td>
-          <td>
-            Manual Calibration
-          </td>
-          <td>{{utils.booleanToYesNo(globals.currentDataReducer.manualCalibration)}}</td>
-        </tr>
-        <tr>
-          <td>
-            <label>Alma Id</label>
-          </td>
-          <td>
-            {{globals.currentDataReducer.userId}}
-          </td>
-          <td>
-            Manual Imaging
-          </td>
-          <td>{{utils.booleanToYesNo(globals.currentDataReducer.manualImaging)}}</td>
-        </tr>
-        <tr>
-          <td>
-            <label>ARC</label>
-          </td>
-          <td>
-            {{globals.currentDataReducer.drArc}}
-          </td>
-          <td>
-            WebLog Review
-          </td>
-          <td>{{utils.booleanToYesNo(globals.currentDataReducer.weblogReview)}}</td>
-        </tr>
-        <tr>
-          <td>
-            <label>Node name</label>
-          </td>
-          <td>
-            {{globals.currentDataReducer.drNode}}
-          </td>
-          <td>
-            QA2 Approval
-          </td>
-          <td>{{utils.booleanToYesNo(globals.currentDataReducer.qa2Approval)}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="ui basic table">
-      <thead>
-        <tr>
-          <th colspan="4">Availability booking</th>
-        </tr>
-        <tr>
-          <th>Availability</th>
-          <th>Start</th>
-          <th>End</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let avail of globals.availabilityList">
-        <td>
-          <div [ngStyle]="{'background-color': utils.getColorString(avail.availability), 'font-weight':'bold'}">
-            {{utils.getAvailabilityString(avail.availability)}}
-          </div>
-        </td>
-        <td>
-          {{utils.getDateFromTimestamp(avail.dateStart)}}
-        </td>
-        <td>
-          {{utils.getDateFromTimestamp(avail.dateEnd)}}
-        </td>
-        <td>
-          <button class="ui tiny compact red button" (click)="delete(avail.id)"> <i class="delete icon"></i>
-            Remove
-          </button>
-
-        </td>
-      </tr>
-      </tbody>
-    </table>
-    <button class="ui tiny compact blue button" (click)="open('Test')">
-      <i class="add icon"></i>
-      Add
-    </button>
-  </div>
-  <div class="six wide column">
-    <div class="ui two column grid">
-      <div class="column ui buttons">
-        <div class="ui almacolor button"
-          mwlCalendarPreviousView
-          [view]="view"
-          [(viewDate)]="viewDate"
-          (viewDateChange)="true">
-          Previous
-        </div>
-        <div class="ui almacolor button"
-          mwlCalendarToday
-          [(viewDate)]="viewDate">
-          Current
-        </div>
-        <div class="ui almacolor button"
-          mwlCalendarNextView
-          [view]="view"
-          [(viewDate)]="viewDate"
-          (viewDateChange)="true">
-          Next
-        </div>
-      </div>
-      <div class="column">
-        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
-      </div>
+    <div class="two wide column">
+        <button class="ui tiny compact blue button" (click)="open('Test')">
+            <i class="add icon"></i>
+            Add
+        </button>
     </div>
-    <mwl-calendar-month-view
-      [viewDate]="viewDate"
-      [events]="globals.events"
-      [excludeDays]="excludeDays"
-      [cellTemplate]="customCellTemplate"
-      (dayClicked)="clickedDate = $event.day.date">
-    </mwl-calendar-month-view>
+    <div class="six wide column">
+        <div class="tiny compact ui buttons">
+            <div class="ui blue button"
+                 mwlCalendarPreviousView
+                 [view]="view"
+                 [(viewDate)]="viewDate"
+                 (viewDateChange)="true">
+                Previous
+            </div>
+            <div class="ui blue button"
+                 mwlCalendarToday
+                 [(viewDate)]="viewDate">
+                Current
+            </div>
+            <div class="ui blue button"
+                 mwlCalendarNextView
+                 [view]="view"
+                 [(viewDate)]="viewDate"
+                 (viewDateChange)="true">
+                Next
+            </div>
+        </div>
+        <div class="column">
+            <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+        </div>
+        <mwl-calendar-month-view
+                [viewDate]="viewDate"
+                [events]="globals.events"
+                [excludeDays]="excludeDays"
+                [cellTemplate]="customCellTemplate"
+                (dayClicked)="clickedDate = $event.day.date">
+        </mwl-calendar-month-view>
 
-  </div>
+    </div>
 
 </div>
 
-<ng-template #customCellTemplate let-day="day" let-locale="locale" style="min-height: 50px !important;">
-  <div class="cal-cell-top">
-    <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
-  </div>
-  <div class="cal-events" *ngIf="day.events.length > 0" >
-    <div
-      class="cal-event"
-      *ngFor="let event of day.events; trackBy:trackByEventId"
-      [style.backgroundColor]="event.color?.primary"
-      [ngClass]="event?.cssClass"
-      (mouseenter)="highlightDay.emit({event: event})"
-      (mouseleave)="unhighlightDay.emit({event: event})"
-      [mwlCalendarTooltip]="event.title | calendarEventTitle:'monthTooltip':event">
-    </div>
-  </div>
-</ng-template>
-
-
 
 <ng-template let-context let-modal="modal" #modalTemplate>
-  <div class="header">Add new period</div>
-  <div class="ui three column grid">
-    <div class="center aligned column">
-      <label>Availability</label>
-      <sui-select class="selection"
-                  [(ngModel)]="selectedAvailability"
-                  [options]="options"
-                  labelField="name"
-                  #select>
-        <sui-select-option *ngFor="let option of select.filteredOptions"
-                           [value]="option">
-        </sui-select-option>
-      </sui-select>
+
+    <div class="header">Add new period</div>
+    <div class="content">
+        <form class="ui form">
+
+            <div class="field">
+                <label>Availability</label>
+                <sui-select class="selection"
+                            [(ngModel)]="selectedAvailability"
+                            [options]="options"
+                            labelField="name"
+                            #select>
+                    <sui-select-option *ngFor="let option of select.filteredOptions"
+                                       [value]="option">
+                    </sui-select-option>
+                </sui-select>
+            </div>
+            <div class="field">
+                <label>Start</label>
+                <form class="ui left icon input">
+                    <i class="calendar icon"></i>
+                    <input suiDatepicker
+                           [(ngModel)]="dateStart"
+                           [pickerMode]="'date'"
+                           [pickerFirstDayOfWeek]="1"
+                           [pickerUseNativeOnMobile]="false">
+                </form>
+            </div>
+            <div class="field">
+                <label>End</label>
+                <form class="ui left icon input">
+                    <i class="calendar icon"></i>
+                    <input suiDatepicker
+                           [(ngModel)]="dateEnd"
+                           [pickerMode]="'date'"
+                           [pickerFirstDayOfWeek]="1"
+                           [pickerUseNativeOnMobile]="false">
+                </form>
+            </div>
+
+            <button class="ui button" type="submit">Submit</button>
+        </form>
     </div>
-    <div class="center aligned column">
-      <label>Start</label>
-      <div class="ui left icon input">
-        <i class="calendar icon"></i>
-        <input suiDatepicker
-               [(ngModel)]="dateStart"
-               [pickerMode]="'date'"
-               [pickerFirstDayOfWeek]="firstDayOfWeek"
-               [pickerUseNativeOnMobile]="false">
-      </div>
-    </div>
-    <div class="center aligned column">
-      <label>End</label>
-      <div class="ui left icon input">
-        <i class="calendar icon"></i>
-        <input suiDatepicker
-               [(ngModel)]="dateEnd"
-               [pickerMode]="'date'"
-               [pickerFirstDayOfWeek]="firstDayOfWeek"
-               [pickerUseNativeOnMobile]="false">
-      </div>
-    </div>
-  </div>
-  <div class="actions">
-    <button class="ui red button" (click)="modal.deny('denied')">Cancel</button>
-    <button class="ui green button" (click)="modal.approve('approved')" autofocus>OK</button>
-  </div>
 </ng-template>
