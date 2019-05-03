@@ -1,27 +1,61 @@
-<div class="ui tiny compact buttons">
-    <button class="ui tiny compact blue button"
-            data-tooltip="Explanation of Primary Action goes here"
-            data-position="bottom left">
-        <i class="clone icon"></i>
-        Primary Action
-    </button>
-    <button class="ui basic tiny compact blue button">
-        <i class="clone icon"></i>
-        Secondary Action
-    </button>
-    <div class="ui basic tiny compact dropdown blue button" suiDropdown>
-        <div class="text">Edit</div>
-        <i class="dropdown icon"></i>
-        <div class="menu" suiDropdownMenu>
-            <div class="item" (click)="f()">
-                <i class="clone icon"></i> Duplicate
-            </div>
-            <div class="item" (click)="f()">
-                <i class="copy icon"></i> Copy  (CTRL+C)
-            </div>
-            <div class="item" (click)="f()">
-                <i class="cut icon"></i> Cut  (CTRL+X)
+<div class="ui two column grid">
+    <div class="column">
+        <div class="ui tiny compact buttons">
+            <button class="ui tiny compact blue button"
+                    data-tooltip="Explanation of Primary Action goes here"
+                    data-position="bottom left">
+                <i class="clone icon"></i>
+                Primary Action
+            </button>
+            <button class="ui basic tiny compact blue button">
+                <i class="clone icon"></i>
+                Secondary Action
+            </button>
+            <div class="ui basic tiny compact dropdown blue button" suiDropdown>
+                <div class="text">Edit</div>
+                <i class="dropdown icon"></i>
+                <div class="menu" suiDropdownMenu>
+                    <div class="item" (click)="f()">
+                        <i class="clone icon"></i> Duplicate
+                    </div>
+                    <div class="item" (click)="f()">
+                        <i class="copy icon"></i> Copy (CTRL+C)
+                    </div>
+                    <div class="item" (click)="f()">
+                        <i class="cut icon"></i> Cut (CTRL+X)
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="column">
+        <button class="ui tiny compact blue button" (click)="open()">
+            <i class="add icon"></i>
+            Add
+        </button>
+    </div>
 </div>
+
+<ng-template let-context let-modal="modal" #modalDialog>
+
+    <div class="header">
+        <i class="upload icon"></i>
+        Import Target List
+    </div>
+    <div class="content">
+        <span>
+            Importing...
+            <sui-progress [value]="37"></sui-progress>
+        </span>
+    </div>
+    <div class="actions">
+    <button class="ui blue basic button" (click)="modal.deny()">
+        Cancel
+    </button>
+    <button class="ui blue button" [disabled]="true"><i class="upload icon"></i>
+        Import
+    </button>
+    </div>
+
+</ng-template>

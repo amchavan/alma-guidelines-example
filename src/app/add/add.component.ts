@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {logger} from "codelyzer/util/logger";
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ARCs, Globals} from '../app.globals';
-import {DataReducer} from '../datareducer'
-import {isNullOrUndefined} from "util";
+import {ModalTemplate, SuiModalService, TemplateModalConfig} from "ng2-semantic-ui";
+import {IContext} from "../booking/booking.component";
 
 @Component({
   selector: 'app-add',
@@ -11,22 +10,23 @@ import {isNullOrUndefined} from "util";
 })
 export class AddComponent implements OnInit {
 
-  dataReducer : DataReducer;
+  @ViewChild('modalDialog')
+  public modalDialog:ModalTemplate<IContext, string, string>
 
-  constructor(public globals: Globals) { }
+  constructor(public modalService:SuiModalService,public globals: Globals) { }
 
   ngOnInit() {
   }
 
-  search() {
-  }
+  public open() {
+    const config = new TemplateModalConfig<IContext, string, string>(this.modalDialog);
 
-  saveDR() {
-  }
+    config.closeResult = "closed!";
+    config.context = { data: "" };
 
-  deleteFromDR() {
-  }
-
-  accountSelected(accId : string) {
+    this.modalService
+        .open(config)
+        .onApprove(result => {})
+        .onDeny(result => {});
   }
 }
