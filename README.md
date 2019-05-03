@@ -12,7 +12,7 @@ This project was generated with Angular CLI version 1.7.4.
 Clone the Git repository (`git clone https://github.com/amchavan/alma-guidelines-example.git`), then
 ```
 cd alma-guidelines-example
-npm install
+npm install ## if needed
 ng build
 ```
 That will create and populate directories `node_modules` and `dist` (where the build products are installed).
