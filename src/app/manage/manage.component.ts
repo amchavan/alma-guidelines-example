@@ -1,55 +1,69 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { SuiModule } from 'ng2-semantic-ui';
-import {Globals, IOption, QUALIFICATIONS} from '../app.globals';
+import {Globals, IOption} from '../app.globals';
 import {ARCs, ARCNodes} from "../app.globals";
 import {DataReducer} from "../datareducer";
 import {SuiModalService, TemplateModalConfig, ModalTemplate} from 'ng2-semantic-ui';
-import {isNullOrUndefined} from "util";
+import {IContext} from "../booking/booking.component";
+import {log} from "util";
 
 export interface IMContext {
-  data:string;
+    data: string;
 }
 
 @Component({
-  selector: 'app-manage',
-  templateUrl: './manage.component.html',
-  styleUrls: ['./manage.component.css']
+    selector: 'app-manage',
+    templateUrl: './manage.component.html',
+    styleUrls: ['./manage.component.css']
 })
 export class ManageComponent implements OnInit {
 
-  @ViewChild('modalTemplate')
-  public modalTemplate:ModalTemplate<IMContext, string, string>
+    @ViewChild('modalSearchForm')
+    public modalSearchForm: ModalTemplate<IMContext, string, string>
 
-  selectedArc: IOption;
-  selectedNode: IOption;
+    selectedArc: IOption;
+    selectedNode: IOption;
 
-  options: IOption[];
-  optionsNodes : Map<String, IOption[]>;
+    options: IOption[];
+    optionsNodes: Map<String, IOption[]>;
 
-  dataReducerSearch = new DataReducer();
-  dataReducerSelected : DataReducer;
+    dataReducerSearch = new DataReducer();
 
-  constructor(public globals: Globals, public modalService:SuiModalService) {
-    this.options = ARCs;
-    this.optionsNodes = ARCNodes;
-    this.dataReducerSearch = new DataReducer()
-  }
+    constructor(public globals: Globals, public modalService: SuiModalService) {
+        this.options = ARCs;
+        this.optionsNodes = ARCNodes;
+        this.dataReducerSearch = new DataReducer()
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  search() {
-  }
+    openSearchForm() {
+        const config = new TemplateModalConfig<IContext, string, string>(this.modalSearchForm);
+        config.closeResult = "closed!";
+        config.context = {data: ""};
 
-  reset() {
-  }
+        this.selectedArc = null;
+        this.selectedNode = null;
 
-  onArcChange() {
-  }
+        this.modalService
+            .open(config)
+            .onApprove(result => {
+            })
+            .onDeny(result => {
+            });
+    }
 
-  onNodeChange() {
-  }
+    reset() {
+    }
 
-  public open(dr) {
-  }
+    onArcChange() {
+        log(">>> new ARC: " + this.selectedArc.name)
+    }
+
+    onNodeChange() {
+        log(">>> new node: " + this.selectedNode.name)
+    }
+
+    public open() {
+    }
 }

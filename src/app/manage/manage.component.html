@@ -1,111 +1,13 @@
-<div class="ui two column grid" style="height: 100%;">
+<div class="ui column grid" style="height: 100%;">
+
+  <div class="two wide column">
+    <button class="ui tiny compact blue button" (click)="openSearchForm()">
+      <i class="search icon"></i>
+      Search
+    </button>
+  </div>
 
   <div class="four wide column">
-    <table class="ui basic table">
-      <thead>
-      <tr>
-        <th colspan="3">Data reducer search</th>
-      </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            Name, id
-          </td>
-          <td>
-            <div class="ui search">
-              <div class="ui icon input">
-                <input class="prompt" type="text" placeholder="DR name/id" >
-                <i class="search icon"></i>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label>Data Reducer ARC</label>
-          </td>
-          <td>
-            <sui-select class="selection"
-                        [(ngModel)]="selectedArc"
-                        [options]="options"
-                        labelField="name"
-                        (selectedOptionChange)="onArcChange()"
-                        #select>
-              <sui-select-option *ngFor="let option of select.filteredOptions"
-                                 [value]="option">
-              </sui-select-option>
-            </sui-select>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label>Data Reducer Node</label>
-          </td>
-          <td>
-            <sui-select *ngIf="selectedArc != undefined"
-                        class="selection"
-                        [(ngModel)]="selectedNode"
-                        [options]="optionsNodes.get(selectedArc.name)"
-                        labelField="name"
-                        (selectedOptionChange)="onNodeChange()"
-                        #select>
-              <sui-select-option *ngFor="let option of select.filteredOptions"
-                                 [value]="option">
-              </sui-select-option>
-            </sui-select>
-          </td>
-        </tr>
-        <tr>
-          <td>Qualifications</td>
-          <td>
-            <sui-checkbox >
-              Manual Calibration
-            </sui-checkbox>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>
-            <sui-checkbox [(ngModel)]="dataReducerSearch.manualImaging">
-              Manual Imaging
-            </sui-checkbox>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>
-            <sui-checkbox [(ngModel)]="dataReducerSearch.weblogReview">
-              WebLog Review
-            </sui-checkbox>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>
-            <sui-checkbox [(ngModel)]="dataReducerSearch.qa2Approval">
-              QA2 Approval
-            </sui-checkbox>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button class="ui tiny compact almacolor button"
-                    (click)="search()" tabindex="0">
-              <i class="search icon"></i>
-              Search
-            </button>
-          </td>
-          <td>
-            <button class="ui tiny compact red button"
-                    (click)="reset()">
-              <i class="delete icon"></i>
-              Reset
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 
   <div  class="twelve wide column ui" style=" cursor: pointer;">
@@ -143,13 +45,202 @@
 
 </div>
 
-<ng-template let-context let-modal="modal" #modalTemplate>
-  <div class="header">Data reducer settings</div>
+<ng-template let-context let-modal="modal" #modalSearchForm>
+
+  <div class="header">Data Reducer search</div>
   <div class="content">
-    <dr-details [dataReducer]="dataReducerSelected"></dr-details>
-  </div>
-  <div class="actions">
-    <button class="ui red button" (click)="modal.deny('denied')">Cancel</button>
-    <button class="ui green button" (click)="modal.approve('approved')" autofocus>Save</button>
+
+    <!--
+    <table class="ui basic table">
+      <tbody>
+      <tr>
+        <td>
+          Name/ID
+        </td>
+        <td>
+          <div class="ui search">
+            <div class="ui icon input">
+              <input class="prompt" type="text" placeholder="DR name/id" >
+              <i class="search icon"></i>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Data Reducer ARC</label>
+        </td>
+        <td>
+          <sui-select class="selection"
+                      [(ngModel)]="selectedArc"
+                      [options]="options"
+                      labelField="name"
+                      (selectedOptionChange)="onArcChange()"
+                      #select>
+            <sui-select-option *ngFor="let option of select.filteredOptions"
+                               [value]="option">
+            </sui-select-option>
+          </sui-select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Data Reducer Node</label>
+        </td>
+        <td>
+          <sui-select *ngIf="selectedArc != undefined"
+                      class="selection"
+                      [(ngModel)]="selectedNode"
+                      [options]="optionsNodes.get(selectedArc.name)"
+                      labelField="name"
+                      (selectedOptionChange)="onNodeChange()"
+                      #select>
+            <sui-select-option *ngFor="let option of select.filteredOptions"
+                               [value]="option">
+            </sui-select-option>
+          </sui-select>
+        </td>
+      </tr>
+      <tr>
+        <td>Qualifications</td>
+        <td>
+          <sui-checkbox >
+            Manual Calibration
+          </sui-checkbox>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <sui-checkbox [(ngModel)]="dataReducerSearch.manualImaging">
+            Manual Imaging
+          </sui-checkbox>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <sui-checkbox [(ngModel)]="dataReducerSearch.weblogReview">
+            WebLog Review
+          </sui-checkbox>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <sui-checkbox [(ngModel)]="dataReducerSearch.qa2Approval">
+            QA2 Approval
+          </sui-checkbox>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button class="ui tiny compact almacolor button"
+                  (click)="search()" tabindex="0">
+            <i class="search icon"></i>
+            Search
+          </button>
+        </td>
+        <td>
+          <button class="ui tiny compact red button"
+                  (click)="reset()">
+            <i class="delete icon"></i>
+            Reset
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    -->
+
+    <form class="ui form">
+      <div class="field">
+        <label>Data Reducer name or ID</label>
+        <div class="ui search">
+          <div class="ui icon input">
+            <input class="prompt" type="text" placeholder="Name/ID...">
+            <i class="search icon"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Data Reducer ARC</label>
+        <sui-select class="selection"
+                    [(ngModel)]="selectedArc"
+                    [options]="options"
+                    labelField="name"
+                    name="arc"
+                    (selectedOptionChange)="onArcChange()"
+                    #select2>
+          <sui-select-option *ngFor="let option of select2.filteredOptions"
+                             [value]="option">
+          </sui-select-option>
+        </sui-select>
+      </div>
+      <div class="field">
+        <label>Data Reducer Node</label>
+        <!-- -->
+        <sui-select *ngIf="selectedArc != undefined"
+                    class="selection"
+                    [(ngModel)]="selectedNode"
+                    [options]="optionsNodes.get(selectedArc.name)"
+                    labelField="name"
+                    name="node"
+                    (selectedOptionChange)="onNodeChange()"
+                    #select3>
+          <sui-select-option *ngFor="let option of select3.filteredOptions"
+                             [value]="option">
+          </sui-select-option>
+        </sui-select>
+      </div>
+      <div class="field">
+        <label>Qualifications</label>
+        <div class="ui four column grid">
+          <div class="column">
+            <sui-checkbox >
+              Manual Calibration
+            </sui-checkbox>
+          </div>
+          <div class="column">
+            <sui-checkbox [(ngModel)]="dataReducerSearch.manualImaging"
+                          name="manual-imagingi">
+              Manual Imaging
+            </sui-checkbox>
+          </div>
+          <div class="column">
+            <sui-checkbox [(ngModel)]="dataReducerSearch.weblogReview"
+                          name="weblog-review">
+              WebLog Review
+            </sui-checkbox>
+          </div>
+          <div class="column">
+            <sui-checkbox [(ngModel)]="dataReducerSearch.qa2Approval"
+                          name="qa2-approval">
+              QA2 Approval
+            </sui-checkbox>
+          </div>
+        </div>
+      </div>
+      <div>
+
+        <button class="ui tiny compact primary button"
+                (click)="search()" tabindex="0">
+          <i class="search icon"></i>
+          Search
+        </button>
+
+        <!--
+            Reset buttons are discouraged, see for instance item 48 at
+            https://www.ventureharbour.com/form-design-best-practices/
+
+        <button class="ui tiny compact red button"
+                (click)="reset()">
+          <i class="delete icon"></i>
+          Reset
+        </button>
+        -->
+      </div>
+    </form>
   </div>
 </ng-template>
