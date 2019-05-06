@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90de53a4-d966-443b-9bb1-d34e4a8a81ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/manage/manage.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/manage.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/manage/manage.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/manage/manage.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page-header/page-header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page-header/page-header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/favicon.ico" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -14,9 +12,26 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="DefaultGradleProjectSettings">
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="alma-guidelines-example" />
   </component>
   <component name="FileEditorManager">
     <leaf>
@@ -29,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/add/add.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="27" lean-forward="true" selection-start-line="11" selection-end-line="12" selection-end-column="27" />
+            <state relative-caret-position="435">
+              <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -53,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/manage/manage.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="226" column="46" selection-start-line="226" selection-start-column="46" selection-end-line="226" selection-end-column="46" />
+            <state relative-caret-position="270">
+              <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#div#0;n#!!top" />
@@ -108,6 +123,12 @@
       </list>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectConfigurationFiles">
     <option name="files">
       <list>
@@ -138,31 +159,6 @@
             <path>
               <item name="alma-guidelines-example" type="b2602c69:ProjectViewProjectNode" />
               <item name="alma-guidelines-example" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="alma-guidelines-example" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alma-guidelines-example" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="alma-guidelines-example" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alma-guidelines-example" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="alma-guidelines-example" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alma-guidelines-example" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="add" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="alma-guidelines-example" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alma-guidelines-example" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="page-header" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -228,18 +224,17 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16176000" />
+    <option name="totallyTimeSpent" value="18014000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="19" y="54" width="1400" height="837" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25110456" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49932885" visible="true" weight="0.25110456" />
+      <window_info id="Structure" order="1" sideWeight="0.50067115" side_tool="true" weight="0.25110456" />
       <window_info id="Designer" order="2" />
-      <window_info id="Learn" order="3" />
+      <window_info id="Learn" order="3" weight="0.3298969" />
       <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Favorites" order="5" side_tool="true" weight="0.3298969" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -252,17 +247,17 @@
       <window_info anchor="bottom" id="TypeScript" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Educational.CheckDetails" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32885906" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.2496318" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.3298969" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Database" order="6" weight="0.3298969" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
     </layout>
@@ -281,6 +276,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/idea.properties">
@@ -390,16 +389,6 @@
     <entry file="file://$PROJECT_DIR$/src/app/app.component.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/add/add.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="27" lean-forward="true" selection-start-line="11" selection-end-line="12" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/manage/manage.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="355">
@@ -412,8 +401,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/manage/manage.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="226" column="46" selection-start-line="226" selection-start-column="46" selection-end-line="226" selection-end-column="46" />
+        <state relative-caret-position="270">
+          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#div#0;n#!!top" />
@@ -431,6 +420,16 @@
             <element signature="n#div#1;n#form#0;n#div#1;n#ng-template#0;n#!!top" />
             <element signature="n#div#2;n#form#0;n#div#1;n#ng-template#0;n#!!top" />
             <element signature="n#div#3;n#form#0;n#div#1;n#ng-template#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/add/add.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
