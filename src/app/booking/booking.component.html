@@ -1,55 +1,22 @@
-<div class="ui three column grid">
-    <div class="column">
-        <button class="ui tiny compact blue button" (click)="open('Test')">
+<div class="ui grid">
+    <div class="two wide column">
+        <button class="ui tiny compact blue button" (click)="openNewPeriodModalForm('Test')">
             <i class="add icon"></i>
             Period
         </button>
     </div>
-    <div class="column">
-        <div class="tiny compact ui buttons">
-            <div class="ui blue button"
-                 mwlCalendarPreviousView
-                 [view]="view"
-                 [(viewDate)]="viewDate"
-                 (viewDateChange)="true">
-                Previous
-            </div>
-            <div class="ui blue button"
-                 mwlCalendarToday
-                 [(viewDate)]="viewDate">
-                Current
-            </div>
-            <div class="ui blue button"
-                 mwlCalendarNextView
-                 [view]="view"
-                 [(viewDate)]="viewDate"
-                 (viewDateChange)="true">
-                Next
-            </div>
-        </div>
-        <div class="column">
-            <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
-        </div>
-        <mwl-calendar-month-view
-                [viewDate]="viewDate"
-                [events]="globals.events"
-                [excludeDays]="excludeDays"
-                [cellTemplate]="customCellTemplate"
-                (dayClicked)="clickedDate = $event.day.date">
-        </mwl-calendar-month-view>
-
-    </div>
-    <div class="column">
+    <div class="six wide column">
         <div class="ui icon input error">
             <input type="text">
             <i class="red warning circle icon"></i>
         </div>
         <div class="ui up pointing red basic label">Something's wrong here</div>
     </div>
+    <div class="four wide column"></div>
 </div>
 
 
-<ng-template let-context let-modal="modal" #modalTemplate>
+<ng-template let-context let-modal="modal" #newPeriodModalForm>
 
     <div class="header">Add new period</div>
     <div class="content">

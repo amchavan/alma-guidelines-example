@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
 import {DataReducer} from "./datareducer";
-import {
-  CalendarEvent,
-  CalendarEventAction,
-  CalendarEventTimesChangedEvent
-} from 'angular-calendar';
 
 export interface IOption {
   id: string,
@@ -88,7 +83,6 @@ export class Globals {
     accounts=[];
     dataReducers=[];
     availabilityList = [];
-    events: CalendarEvent[] = [];
     currentDataReducer : DataReducer;
     selectedClass = "bold";
 

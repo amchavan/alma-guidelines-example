@@ -1,19 +1,8 @@
-import { Component, OnInit, ViewChild,  Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import {SuiModalService, TemplateModalConfig, ModalTemplate} from 'ng2-semantic-ui';
-import {colors, Globals, IOption, availabilityOptions} from "../app.globals";
-import {
-  startOfDay,
-  endOfDay,
-  subDays,
-  addDays,
-  endOfMonth,
-  isSameDay,
-  isSameMonth,
-  addHours
-} from 'date-fns';
+import {Globals, IOption, availabilityOptions} from "../app.globals";
 import {Availability} from "../availability";
 import {Utils} from "../app.utils";
-import {DataReducer} from "../datareducer";
 
 export interface IContext {
   data:string;
@@ -26,8 +15,8 @@ export interface IContext {
 })
 export class BookingComponent implements OnInit {
 
-  @ViewChild('modalTemplate')
-  public modalTemplate:ModalTemplate<IContext, string, string>
+  @ViewChild('newPeriodModalForm')
+  public newPeriodModalForm:ModalTemplate<IContext, string, string>;
 
   view: string = 'month';
 
@@ -57,22 +46,15 @@ export class BookingComponent implements OnInit {
   ngOnInit() {
   }
 
-  public open(dynamicContent:string = "Example") {
-    const config = new TemplateModalConfig<IContext, string, string>(this.modalTemplate);
+  public openNewPeriodModalForm(dynamicContent:string = "Example") {
+    const config = new TemplateModalConfig<IContext, string, string>(this.newPeriodModalForm);
 
     config.closeResult = "closed!";
     config.context = { data: dynamicContent };
 
     this.modalService
       .open(config)
-      .onApprove(result => {
-        let availability = new Availability();
-        availability.userId = this.globals.currentDataReducer.userId;
-        availability.availability = this.selectedAvailability.id;
-        availability.dateStart = this.dateStart;
-        availability.dateEnd = this.dateEnd;
-        console.log(" add availability " + JSON.stringify(availability));
-      })
+      .onApprove(result => { /* deny callback */})
       .onDeny(result => { /* deny callback */});
   }
 
